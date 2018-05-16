@@ -3,15 +3,15 @@
 const char* ssid = "ssid";
 const char* password = "passwrod";
  
-int valuePin = 13; // GPIO13
+int valvePin = 13; // GPIO13
 WiFiServer server(80);
  
 void setup() {
   Serial.begin(115200);
   delay(10);
  
-  pinMode(valuePin, OUTPUT);
-  digitalWrite(valuePin, LOW);
+  pinMode(valvePin, OUTPUT);
+  digitalWrite(valvePin, LOW);
  
   // Connect to WiFi network
   Serial.println();
@@ -62,16 +62,16 @@ void loop() {
  
   int value = LOW;
   if (request.indexOf("/Valve=ON") != -1)  {
-    digitalWrite(valuePin, HIGH);
+    digitalWrite(valvePin, HIGH);
     value = HIGH;
   }
   if (request.indexOf("/Valve=OFF") != -1)  {
-    digitalWrite(valuePin, LOW);
+    digitalWrite(valvePin, LOW);
     value = LOW;
   }
  
-// Set valuePin according to the request
-//digitalWrite(valuePin, value);
+// Set valvePin according to the request
+//digitalWrite(valvePin, value);
  
   // Return the response
   client.println("HTTP/1.1 200 OK");
